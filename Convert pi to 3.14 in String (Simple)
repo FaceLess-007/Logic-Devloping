@@ -1,0 +1,40 @@
+/*
+Convert pi to 3.14 like:
+Input: xpix
+Output: x3.14x
+*/
+
+//LOGIC 1:
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int flag=0;
+    char ch[20];
+    cout<<"Enter the string:";
+    cin>>ch;
+
+    cout<<"The pi to 3.14 is ";
+    for(int i=0; ch[i]!='\0'; i++)\
+    {
+        if(ch[i]=='p' && ch[i+1]=='i')
+        {
+            i += 1;
+            cout<<"3.14";
+            flag = 1;
+        }
+        if(flag==0)
+            cout<<ch[i];
+        flag=0;
+    }
+
+    return 0;
+}
+/*
+OUTPUT:
+Enter the string:xpix
+The pi to 3.14 is x3.14x
+Process returned 0 (0x0)   execution time : 2.565 s
+Press any key to continue.
+*/
