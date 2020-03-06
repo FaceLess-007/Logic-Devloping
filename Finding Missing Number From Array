@@ -1,0 +1,66 @@
+/*
+Find Missing No. from array starting from 0 to N like:
+
+If array size 3:
+Input 3 0 1:
+Missing No.: 2
+*/
+
+#include<iostream>
+using namespace std;
+
+inline int fmin(int arr[20],int n)
+{
+    int m=arr[0];
+    for(int i=1; i<n;i++)
+    {
+        if(m>arr[i])
+            m=arr[i];
+    }
+    return m;
+}
+int main()
+{
+    int arr[20],n,min,sum1=0,sum2=0,i;
+
+    cout<<"Enter the size of array: ";
+    cin>>n;
+    cout<<"Enter array: ";
+
+    for(i=0; i<n; i++)
+        cin>>arr[i];
+
+    min=fmin(arr,n);
+
+    for(i=min; (i-min)<n; i++)
+    {
+        sum1+=i;
+        sum2+=arr[i-min];
+    }
+
+    if(min==1 && sum1==sum2)
+    {
+        cout<<"The missing no. is:0";
+    }
+    else
+    {
+        sum1+=i;
+        sum1=sum1-sum2;
+
+        cout<<"The missing no. is:"<<sum1;
+    }
+
+    return 0;
+}
+
+//OUTPUT:
+//Enter the size of array: 3
+//Enter array: 3 0 1
+//The missing no. is:2
+
+/*
+OUTPUT:
+Enter the size of array: 9
+Enter array: 9 6 4 2 3 5 7 0 1
+The missing no. is:8
+*/
