@@ -1,0 +1,56 @@
+/*
+Convert pi to 3.14 like:
+Input: xpix
+Output: x3.14x
+*/
+
+//LOGIC 2:
+#include<iostream>
+using namespace std;
+
+char ch[20];
+
+int clen()
+{
+    int i;
+    for(i=0; ch[i]!='\0'; i++)
+    {
+
+    }
+    return i;
+}
+
+int main()
+{
+    cout<<"Enter the string:";
+    cin>>ch;
+    int z,check=0;
+    for(int i=0; ch[i]!='\0'; i++)
+    {
+        if(ch[i]=='p' && ch[i+1]=='i')
+        {
+            ch[i] = '3';
+            ch[++i] = '.';
+            for(int j=clen(); j!=i; j--)
+            {
+                ch[j+1] = ch[j];
+            }
+            ch[++i] = '1';
+            for(int j=clen(); j!=i; j--)
+            {
+                ch[j+1] = ch[j];
+            }
+            ch[++i] = '4';
+        }
+    }
+    cout<<"New string:"<<ch;
+    return 0;
+}
+
+/*
+OUTPUT:
+Enter the string:xpix
+New string:x3.14x
+Process returned 0 (0x0)   execution time : 2.229 s
+Press any key to continue.
+*/
