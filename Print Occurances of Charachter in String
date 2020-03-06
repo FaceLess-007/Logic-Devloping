@@ -1,0 +1,68 @@
+/*
+Print only Occurance of character in String like:
+String: AABBCAA
+Output: AAAABB
+*/
+
+#include<iostream>
+#include<cstdlib>
+#include<ctype.h>
+using namespace std;
+
+int main()
+{
+    char str[20],check[20];
+    int c=0,z=0,flag;
+    check[0]='\0';
+    cout<<"Enter the String:";
+    cin>>str;
+    cout<<"String is:";
+    for(int i=0; str[i]!='\0'; i++)
+    {
+        for(int j=0; str[j]!='\0'; j++)
+        {
+            if(str[i]==str[j])
+                c++;
+        }
+        if(c>1)
+        {
+            if(check[0]=='\0')
+            {
+                check[z]=str[i];
+                z++;
+                for(int k=0;k<c;k++)
+                    cout<<str[i];
+            }
+            else
+            {
+                for(int m=0;m<z;m++)
+                {
+                    if(str[i]==check[m])
+                    {
+                        flag=0;
+                        break;
+                    }
+                    else
+                        flag=1;
+                }
+                if(flag!=0)
+                {
+                    for(int k=0;k<c;k++)
+                        cout<<str[i];
+                    check[z]=str[i];
+                    z++;
+                }
+            }
+        }
+        c=0;
+    }
+    return 0;
+}
+
+/*
+OUTPUT:
+Enter the String:AABBCAA
+String is:AAAABB
+Process returned 0 (0x0)   execution time : 5.444 s
+Press any key to continue.
+*/
