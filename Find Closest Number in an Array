@@ -1,0 +1,98 @@
+/*
+Given an array of integers and find the closest value to the given number.
+Array may contain duplicate values and negative numbers:
+Ex:
+Array : 2,5,6,7,8,8,9
+Target number : 5
+Output : 5
+
+Target number : 11
+Output : 9
+
+Target number : 4
+Output : 5
+*/
+
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+int main()
+{
+    int arr[] = {2,7,6,5,8,8,9};
+    int val, i, j, great=99, les;
+
+    int n = sizeof(arr)/sizeof(arr[0]);
+    sort(arr, arr+n);
+
+    cout<<"Array : ";
+    for(int i=0 ; i<n; i++)
+        cout<<arr[i]<<" ";
+
+    cout<<"\nEnter the Target Value: ";
+    cin>>val;
+
+    for(i=0; arr[i]<=val; i++)
+    {
+        if(i==n)
+        {
+            break;
+        }
+
+        if(arr[i]==val)
+        {
+            cout<<"Closest Number: "<<arr[i];
+            goto ext;
+        }
+    }
+
+    if(i<n)
+    {
+        for(j=i; arr[j]>=val; j++)
+        {
+            if(arr[j]==val)
+            {
+                cout<<"Closest Number: "<<arr[i];
+                goto ext;
+            }
+
+            if(arr[j]>val)
+            {
+                break;
+            }
+        }
+        great = arr[j] - val;
+    }
+    les = val - arr[--i];
+
+    if(les<great)
+        cout<<"Closest Number: "<<arr[i];
+    else
+        cout<<"Closest Number: "<<arr[j];
+
+    ext:
+    return 0;
+}
+
+/*
+OUTPUT:
+Array : 2 5 6 7 8 8 9
+Enter the Target Value: 5
+Closest Number: 5
+Process returned 0 (0x0)   execution time : 4.401 s
+Press any key to continue.
+
+OUTPUT:
+Array : 2 5 6 7 8 8 9
+Enter the Target Value: 11
+Closest Number: 9
+Process returned 0 (0x0)   execution time : 1.750 s
+Press any key to continue.
+
+OUTPUT:
+Array : 2 5 6 7 8 8 9
+Enter the Target Value: 4
+Closest Number: 5
+Process returned 0 (0x0)   execution time : 1.332 s
+Press any key to continue.
+*/
