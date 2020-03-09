@@ -1,0 +1,187 @@
+/*
+Given a binary matrix of 01s, each time you click a point (i, j), the bit of the same row and column are all flipped.
+*/
+
+#include<iostream>
+#include<stdlib.h>
+#define n 3
+#define m 3
+using namespace std;
+
+void display();
+void flip(int,int);
+void choice();
+
+bool a[3][3] = {{1,0,1},{0,1,0},{1,0,1}};
+char ch;
+
+void display()
+{
+    cout<<"\n****DISPLAYING****\n";
+    for(int i=0; i<3; i++)
+    {
+        for(int j=0; j<3; j++)
+        {
+            cout<<a[i][j]<<"\t";
+        }
+        cout<<endl;
+    }
+    cout<<"******************"<<endl;
+}
+
+void choice()
+{
+    cout<<"******CHOICE******\n";
+    cout<<"1\t2\t3\n4\t5\t6\n7\t8\t9\n";
+    cout<<"******************"<<endl;
+    cout<<"Press 0 to EXIT...\nEnter a Point: ";
+    cin>>ch;
+    switch(ch)
+    {
+    case '0':
+        display();
+        break;
+    case '1':
+        flip(0,0);
+        display();
+        break;
+    case '2':
+        flip(0,1);
+        display();
+        break;
+    case '3':
+        flip(0,2);
+        display();
+        break;
+    case '4':
+        flip(1,0);
+        display();
+        break;
+    case '5':
+        flip(1,1);
+        display();
+        break;
+    case '6':
+        flip(1,2);
+        display();
+        break;
+    case '7':
+        flip(2,0);
+        display();
+        break;
+    case '8':
+        flip(2,1);
+        display();
+        break;
+    case '9':
+        flip(2,2);
+        display();
+        break;
+    default:
+        cout<<"\n!!!Please Enter correct input!!!";
+        choice();
+        break;
+    }
+}
+
+void flip(int x, int y)
+{
+    //row
+    for(int i=0; i<m; i++)
+    {
+        if(a[x][i]==0)
+            a[x][i]=1;
+        else
+            a[x][i]=0;
+    }
+    //column
+    for(int i=0; i<n; i++)
+    {
+        if(a[i][y]==0)
+            a[i][y]=1;
+        else
+            a[i][y]=0;
+    }
+    //flip original pos
+    if(a[x][y]==0)
+        a[x][y]=1;
+    else
+        a[x][y]=0;
+}
+
+int main()
+{
+    display();
+    while(ch!='0')
+    {
+        choice();
+
+    }
+    cout<<"Exit...";
+    return  0;
+}
+
+/*
+OUTPUT:
+
+****DISPLAYING****
+1       0       1
+0       1       0
+1       0       1
+******************
+******CHOICE******
+1       2       3
+4       5       6
+7       8       9
+******************
+Press 0 to EXIT...
+Enter a Point: 1
+
+****DISPLAYING****
+0       1       0
+1       1       0
+0       0       1
+******************
+******CHOICE******
+1       2       3
+4       5       6
+7       8       9
+******************
+Press 0 to EXIT...
+Enter a Point: 9
+
+****DISPLAYING****
+0       1       1
+1       1       1
+1       1       0
+******************
+******CHOICE******
+1       2       3
+4       5       6
+7       8       9
+******************
+Press 0 to EXIT...
+Enter a Point: 5
+
+****DISPLAYING****
+0       0       1
+0       0       0
+1       0       0
+******************
+******CHOICE******
+1       2       3
+4       5       6
+7       8       9
+******************
+Press 0 to EXIT...
+Enter a Point: 0
+
+****DISPLAYING****
+0       0       1
+0       0       0
+1       0       0
+******************
+Exit...
+Process returned 0 (0x0)   execution time : 8.821 s
+Press any key to continue.
+*/
